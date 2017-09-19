@@ -46,15 +46,28 @@ code {
   padding: 7px;
 }
 
-.tweetbox img {
+/*.tweetbox img {
   float: left;
   height: 48px;
   width: 48px;
-  content:url("http://lorempixel.com/48/48");
+  content:url("http://www.placecage.com/c/48/48");
+}*/
+
+.tweetbox::before {
+  float: left;
+  height: 48px;
+  width: 48px;
+  margin:5px;
+  content:url("http://www.placecage.com/c/48/48");
 }
+
 .content {
   margin-left: 60px;
 }
 .content .by {
   font-weight: bold;
+}
+
+li{
+	list-style:none;
 }
