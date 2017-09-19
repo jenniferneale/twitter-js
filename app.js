@@ -2,6 +2,7 @@ const express = require( 'express' );
 const app = express();
 const volleyball = require('volleyball');
 const nunjucks = require('nunjucks');
+const routes = require('./routes');
 
 /*app.use(function(req,res,next){
 	console.log(req.method + " " + req.url + " " + 200);
@@ -16,30 +17,32 @@ nunjucks.configure('views',{
 	express:app
 	}); // point nunjucks to the proper directory for templates
 
-nunjucks.configure('views', {noCache: true});
-nunjucks.render('index.html', locals, function (err, output) {
+nunjucks.render('index.html', function (err, output) {
     console.log("Output: " + output);
 });
 
 app.use(volleyball);
-
-app.get('/news',function(req,res){
-	res.send("Sunny with a chance of meatballs?");
-});
+app.use('/',routes);
+app.use(express.static('public'));
 
 app.listen(3000,function(request,response){
 	console.log("I'm listening!");
 });
 
-var locals = {
+/*var locals = {
     title: 'Wizards of the 4th Age:',
     people: [
         { name: 'Gandalf'},
         { name: 'Frodo' },
-        { name: 'Hermione'}
+        { name: 'Hermione'},
+		{ name: 'Omri Sr.'}
     ]
 };
 
 app.get('/',function(req,res){
 	res.render('index',locals);
 });
+
+app.get('/tweets/num',function(req,res){
+	
+});*/

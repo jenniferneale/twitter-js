@@ -1,16 +1,24 @@
-<html>
-	<head>
-	</head>
-	<body>
-		<h1>{{ title }}</h1>
-		<p>It's LeviOHsa, not LevioSA.</p>
-		<ul>
-		{% for person in people %}
-		  <li>{{ person.name | replace("i","qui") | replace("o","i") | lower }}</li>
-		{% endfor %}
-		</ul>
-		<h2>Made by cool people.</h2>
+{% extends "layout.html" %}
 
-		<script src="nunjucks.js"></script>
-	</body>
-</html>
+{% block content %}
+  
+  <div class="page-header">
+    <h1>Welcome to Twitter.js!</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
+      <b>Your Name</b><br>
+      100 followers
+    </div>
+    <div class="col-md-9">
+    
+      <!-- display tweets here -->
+      {% for tweet in tweets %}
+        <li>{{tweet.content}}</li>
+      {% endfor %}
+      
+    </div>
+  </div>
+    
+{% endblock %}
