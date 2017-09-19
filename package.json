@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/jenniferneale/twitter-js#readme",
   "dependencies": {
+    "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "lodash": "^4.17.4",
     "nunjucks": "^3.0.1",
+    "socket.io": "^2.0.3",
     "volleyball": "^1.4.1"
   }
 }

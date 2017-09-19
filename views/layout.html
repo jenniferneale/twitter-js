@@ -61,7 +61,7 @@
 
       <!-- Begin page content -->
       <div class="container">
-        {% block content %}Welcome to Twitter.js{% endblock %}
+        {% block content %}Welcome to Cager!{% endblock %}
       </div> <!-- end container -->
       
     </div>
@@ -78,5 +78,44 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+
+<script>
+  // Load the socket.io library above, then connect to the server.
+  // Because the socket.io server is being run on the same server as your 
+  // Express instance, you can connect() without any arguments.
+  var socket = io.connect();
+  socket.on('connect', function(){
+    console.log('connected to server via WebSockets!');
+  });
+  // When 'new_tweet' events are fired, do something with the packaged tweet
+  socket.on('newTweet', function (tweet) { 
+    console.log("socket on event fired. Tweet: " + tweet);
+    
+	//document.appendChild()
+
+    // some logic to add the new tweet to the DOM…
+	var tweetList = document.getElementById("tweetList");
+	//console.log("tweetList.text: " + tweetList.text);
+	var newItem = document.createElement("li");
+	newItem.classList.add("content");
+	var newDiv = document.createElement("div");
+	newDiv.classList.add("tweetbox");
+	newItem.appendChild(newDiv);
+	var p1 = document.createElement("p");
+	p1.classList.add("by");
+	var linky = document.createElement("a");
+	linky.innerHTML = "{{tweet.name}}";
+	linky.href = "/users/{{tweet.name}}";
+	p1.appendChild(linky);
+	var p2 = document.createElement("p");
+	p2.innerHTML = "{{tweet.content}}";
+	newDiv.appendChild(p1);
+	newDiv.appendChild(p2);	
+	tweetList.appendChild(newItem);	
+
+  }); 
+</script>
+
   </body>
 </html>

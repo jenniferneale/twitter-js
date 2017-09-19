@@ -3,7 +3,7 @@
 {% block content %}
   
   <div class="page-header">
-    <h1>Welcome to Twitter.js!</h1>
+    <h1>Welcome to Cager!</h1>
   </div>
   <div class="row">
     <div class="col-md-3">
@@ -12,9 +12,22 @@
       100 followers
     </div>
     <div class="col-md-9">
-    
+
+		{% if showForm %}
+		  <form action="/tweets" method="POST">
+			<label for="name_field">Name:</label>
+			<input name="name" type="text" id="name_field" value="{{username}}"/>
+
+			<label for="text_field">Text:</label>
+			<input name="text" type="text" id="text_field" style="width: 350px;" />
+
+			<input type="submit" value="Submit" />
+		  </form>
+		{% endif %}
+
       <!-- display tweets here -->
-      {% for tweet in tweets %}
+      <ul id="tweetList">
+	  {% for tweet in tweets %}
         <li class="content">
 			<div class="tweetbox">				
 				<p class="by"><a href="/users/{{tweet.name}}">{{tweet.name}}</a></p>
@@ -22,7 +35,7 @@
 			</div>
 		</li>
       {% endfor %}
-      
+      </ul>
     </div>
   </div>
     
