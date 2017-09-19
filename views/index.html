@@ -1,1 +1,16 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<h1>{{ title }}</h1>
+		<p>It's LeviOHsa, not LevioSA.</p>
+		<ul>
+		{% for person in people %}
+		  <li>{{ person.name | replace("i","qui") | replace("o","i") | lower }}</li>
+		{% endfor %}
+		</ul>
+		<h2>Made by cool people.</h2>
 
+		<script src="nunjucks.js"></script>
+	</body>
+</html>
